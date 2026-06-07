@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Family Tracks Europe</title>
+  <style>
+    :root {
+      --cream: #F8F4EA;
+      --green: #315C45;
+      --dark: #061408;
+      --brown: #8A5A32;
+      --text: #243528;
+      --muted: #53624F;
+      --line: #D9CBB3;
+      --soft: #EFE5D2;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(248, 244, 234, 0.95);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+
+    .logo {
+      background: var(--green);
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+    }
+
+    .brand-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .brand-subtitle {
+      margin: 2px 0 0;
+      color: #6C7A60;
+      font-size: 12px;
+    }
+
+    nav {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    nav button, .brand-button {
+      background: none;
+      border: 0;
+      font: inherit;
+      color: #3E4E3B;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    nav button:hover, nav button.active {
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    main {
+      min-height: 70vh;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 76px 24px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 16px;
+      color: var(--green);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 0.98;
+      letter-spacing: -2px;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.05;
+      margin: 0 0 24px;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 22px;
+    }
+
+    p {
+      line-height: 1.65;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 20px;
+      max-width: 720px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      padding: 16px 24px;
+      border-radius: 18px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+      box-shadow: 0 12px 30px rgba(49,92,69,0.2);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--green);
+      border: 1px solid var(--line);
+    }
+
+    .image-card {
+      position: relative;
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 34px;
+      border: 8px solid white;
+      box-shadow: 0 22px 55px rgba(0,0,0,0.18);
+    }
+
+    .floating-card {
+      position: absolute;
+      left: -22px;
+      bottom: -22px;
+      max-width: 310px;
+      background: white;
+      border: 1px solid #E6D8C0;
+      border-radius: 26px;
+      padding: 20px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+    }
+
+    .floating-card p {
+      margin: 4px 0;
+    }
+
+    .cards {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #E6D8C0;
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    .icon {
+      color: var(--brown);
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .page-label {
+      color: var(--brown);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 13px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+      margin-top: 48px;
+    }
+
+    .green-panel {
+      background: var(--green);
+      color: white;
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: 0 18px 40px rgba(49,92,69,0.22);
+    }
+
+    .green-panel p {
+      color: #E8E2D7;
+    }
+
+    .white-panel {
+      background: white;
+      border: 1px solid #E6D8C0;
+      border-radius: 34px;
+      padding: 34px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    .soft-panel {
+      background: var(--soft);
+      border: 1px solid #E6D8C0;
+      border-radius: 26px;
+      padding: 28px;
+    }
+
+    .included {
+      display: grid;
+      gap: 15px;
+    }
+
+    .included div {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .check {
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .activity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .activity {
+      background: var(--cream);
+      border: 1px solid #E6D8C0;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: white;
+      font-size: 14px;
+    }
+
+    article {
+      max-width: 900px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid #E6D8C0;
+      background: var(--cream);
+      font: inherit;
+      margin-bottom: 14px;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid var(--green);
+    }
+
+    footer {
+      background: var(--dark);
+      color: var(--cream);
+      padding: 64px 24px;
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-title {
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 28px;
+    }
+
+    .footer-links {
+      justify-self: end;
+    }
+
+    .footer-links button {
+      display: block;
+      background: none;
+      border: 0;
+      color: white;
+      font: inherit;
+      font-size: 22px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .socials {
+      display: flex;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .social {
+      width: 56px;
+      height: 56px;
+      color: white;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-weight: 800;
+      font-size: 22px;
+    }
+
+    .insta { background: #E1306C; }
+    .linkedin { background: #0A66C2; }
+
+    .hidden { display: none; }
+
+    @media (max-width: 850px) {
+      .hero, .grid-2, .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-links {
+        justify-self: start;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      nav {
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .image-card img {
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .cards, .activity-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-card {
+        position: static;
+        margin-top: 16px;
+      }
+    }
+
+    .keyword {
+      color: #315C45;
+      font-weight: 800;
+    }
+
+    .blog-image-grid {
+      max-width: 980px;
+      margin: 42px 0 34px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .blog-image-card {
+      background: white;
+      border: 1px solid #E6D8C0;
+      border-radius: 30px;
+      padding: 12px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      overflow: hidden;
+      height: auto;
+      align-self: start;
+    }
+
+    .blog-image-card img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 22px;
+      display: block;
+    }
+
+    .blog-image-card.featured img {
+      height: 360px;
+    }
+
+    .blog-image-card p {
+      display: block;
+      color: #53624F;
+      font-size: 14px;
+      margin: 12px 8px 8px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 850px) {
+      .blog-image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .blog-image-card img,
+      .blog-image-card.featured img {
+        height: 300px;
+      }
+    }
+
+article.white-panel h2 {
+      color: #C85F3D;
+      font-size: 22px;
+      margin-top: 28px;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    article.white-panel h2:first-child {
+      margin-top: 0;
+    }
+
+    .blog-cta-link {
+      color: #315C45;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+    }
+
+    .blog-cta-button {
+      background: none;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      color: #315C45;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+    }
+
+    .blog-cta-button:hover {
+      color: #C85F3D;
+    }
+
+    .about-panel {
+      max-width: 980px;
+    }
+
+    .about-content h2 {
+      color: #C85F3D;
+      font-size: 22px;
+      margin-top: 30px;
+      margin-bottom: 8px;
+      line-height: 1.25;
+    }
+
+    .about-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .about-content p {
+      color: #53624F;
+      line-height: 1.65;
+    }
+
+    .about-csr-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 34px;
+      align-items: start;
+      margin-top: 46px;
+    }
+
+    .about-side-cards {
+      display: grid;
+      gap: 18px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .about-side-card {
+      background: #EFE5D2;
+      border: 1px solid #E6D8C0;
+      border-radius: 28px;
+      padding: 26px 28px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    }
+
+    .about-side-card h3 {
+      color: #315C45;
+      font-size: 23px;
+      margin: 0 0 10px;
+      line-height: 1.2;
+    }
+
+    .about-side-card p {
+      color: #53624F;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .about-csr-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .about-side-cards {
+        position: static;
+      }
+    }
+
+    .about-gallery {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 22px;
+      margin: 42px 0 34px;
+      max-width: 1180px;
+      align-items: start;
+    }
+
+    .about-gallery-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-visual-card {
+      background: white;
+      border: 1px solid #E6D8C0;
+      border-radius: 30px;
+      padding: 12px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+
+    .about-visual-card img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 22px;
+    }
+
+    .about-gallery-main img {
+      height: 590px;
+    }
+
+    .about-visual-card.compact img {
+      height: 198px;
+    }
+
+    .about-visual-card p {
+      color: #53624F;
+      font-size: 14px;
+      margin: 12px 8px 6px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .about-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .about-gallery-main img,
+      .about-visual-card.compact img {
+        height: 300px;
+      }
+    }
+
+    .source-link {
+      color: #315C45;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .source-link:hover {
+      color: #C85F3D;
+    }
+
+    .about-gallery-left {
+      display: grid;
+      gap: 18px;
+      align-self: start;
+    }
+
+    .about-quote-card {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      padding: 10px 12px 0;
+      box-shadow: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 130px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .about-quote-card p {
+      margin: 0 auto;
+      color: #6E8B6C;
+      font-size: 24px;
+      line-height: 1.35;
+      font-style: italic;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.2px;
+      max-width: 520px;
+    }
+
+    @media (max-width: 900px) {
+      .about-quote-card p {
+      margin: 0 auto;
+      color: #6E8B6C;
+      font-size: 24px;
+      line-height: 1.35;
+      font-style: italic;
+      font-weight: 600;
+      text-align: center;
+      letter-spacing: 0.2px;
+      max-width: 520px;
+    }
+    }
+
+    .about-quote-card::after {
+      content: "";
+      width: 150px;
+      height: 8px;
+      border-radius: 999px;
+      background: #EFE5D2;
+      display: block;
+      margin-top: 16px;
+    }
+
+    .trip-extra-photo {
+      margin-top: 22px;
+      width: 100%;
+    }
+
+    .trip-extra-photo img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      border-radius: 22px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand" onclick="showPage('home')">
+        <div class="logo">🚆</div>
+        <div>
+          <p class="brand-title">Family Tracks Europe</p>
+          <p class="brand-subtitle">Stress-free sustainable train adventures</p>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" onclick="showPage('home')">Home</button>
+        <button class="nav-btn" onclick="showPage('trip')">The Trip</button>
+        <button class="nav-btn" onclick="showPage('blog')">Blog</button>
+        <button class="nav-btn" onclick="showPage('about')">About Us</button>
+        <button class="nav-btn" onclick="showPage('contact')">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home" class="page">
+    <section class="container hero">
+      <div>
+        <div class="eyebrow">🌿 Sustainable family travel across Europe</div>
+        <h1>Explore Europe by train, without the stress.</h1>
+        <p class="intro">A 14-day train-based family holiday for Dutch families with children aged 6–11. We organise the routes, stays and activities, so your family can simply enjoy the journey.</p>
+        <div class="buttons">
+          <button class="btn btn-primary" onclick="showPage('trip')">Discover the trip</button>
+          <button class="btn btn-secondary" onclick="showPage('contact')">Request travel advice</button>
+        </div>
+      </div>
+      <div class="image-card">
+        <img src="images/homepage_family_hiking.png" alt="Family hiking together in nature">
+        <div class="floating-card">
+          <p><strong>Decision-free travel</strong></p>
+          <p>Pre-booked trains, ready-to-use accommodation and family activities included.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <div class="card"><div class="icon">🚆</div><h3>Train-based</h3><p>Travel through Europe without flying.</p></div>
+      <div class="card"><div class="icon">⛺</div><h3>Ready-to-use stays</h3><p>Equipped tents or mobile homes, no gear needed.</p></div>
+      <div class="card"><div class="icon">🛡️</div><h3>Child-friendly</h3><p>Activities selected for children aged 6–11.</p></div>
+      <div class="card"><div class="icon">🌿</div><h3>Lower-impact</h3><p>Clear sustainability choices without greenwashing.</p></div>
+    </section>
+  </main>
+
+  <main id="trip" class="page hidden">
+    <section class="container">
+      <p class="page-label">The Trip</p>
+      <h1>14-Day Sustainable Family Train Holiday</h1>
+      <p class="intro">For Dutch families who want adventure, comfort and less stress. We arrange the train routes, accommodation and family-friendly activities.</p>
+
+      <div class="grid-2">
+        <div class="green-panel">
+          <p>Our 14-day sustainable family train holiday is designed for Dutch families with children aged 6–11 who want adventure, comfort and less stress. Instead of spending hours planning routes, finding child-friendly accommodation and checking transport options, families receive a complete travel experience that is already organised.</p>
+          <p>The journey takes families by train to beautiful destinations in Southern Europe, such as Italy, Slovenia or Croatia. The trip combines nature and culture, so children can explore mountains, rivers, small towns and cities in one holiday. Families stay in equipped tents or mobile homes, which means there is no need to bring camping gear.</p>
+          <p>The package includes pre-booked family-friendly train routes, comfortable accommodation, a digital itinerary and curated activities. Examples of activities are mountain biking, canoeing, river swimming, climbing parks and cultural city visits. This makes the trip active and educational, but still manageable for parents.</p>
+          <p>This holiday is ideal for families who want to travel more sustainably without losing comfort. Travelling by train creates a slower and more meaningful experience. Children can enjoy the journey itself, while parents know that the main travel details have already been arranged.</p>
+          <div class="tags">
+            <span class="tag">#SustainableFamilyTravel</span>
+            <span class="tag">#TrainHolidayEurope</span>
+            <span class="tag">#EcoTravelWithKids</span>
+            <span class="tag">#FamilyTrainTrip</span>
+            <span class="tag">#SlowTravelEurope</span>
+          </div>
+        </div>
+
+        <div class="white-panel">
+          <h2>What is included?</h2>
+          <div class="included">
+            <div><span class="check">✓</span><span>Pre-booked family-friendly train routes</span></div>
+            <div><span class="check">✓</span><span>Ready-to-use tents or mobile homes</span></div>
+            <div><span class="check">✓</span><span>Digital itinerary with clear travel steps</span></div>
+            <div><span class="check">✓</span><span>Curated activities in nature and cities</span></div>
+            <div><span class="check">✓</span><span>Age-appropriate activity partners</span></div>
+            <div><span class="check">✓</span><span>Transparent pricing and practical travel advice</span></div>
+          </div>
+          <div class="activity-grid">
+            <div class="activity">⛰️<br>Nature</div>
+            <div class="activity">🚲<br>Adventure</div>
+            <div class="activity">🌊<br>Swimming</div>
+            <div class="activity">🗺️<br>Culture</div>
+          </div>
+          <button class="btn btn-primary" style="width:100%; margin-top:28px;" onclick="showPage('contact')">Start planning your family train adventure</button>
+
+          <div class="trip-extra-photo">
+            <img src="images/blog_train_landscape.png" alt="Children enjoying water play during a family holiday">
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <main id="blog" class="page hidden">
+    <section class="container">
+      <p class="page-label">Blog</p>
+      <h1>Why Train Travel Is the Perfect Family Adventure in Europe</h1>
+      <p class="intro">A short blog for parents who want a more meaningful, relaxed and sustainable family holiday.</p>
+
+      <div class="blog-image-grid">
+        <div class="blog-image-card featured">
+          <img src="images/blog_camping_caravan.png" alt="Train journey through mountains">
+          <p>Train travel makes the journey part of the holiday, with views of landscapes, mountains and nature along the way.</p>
+        </div>
+        <div class="blog-image-card">
+          <img src="images/about_family_train_station.png" alt="Cozy campsite accommodation surrounded by nature">
+          <p>Camping gives families the feeling of outdoor adventure, while still offering comfort and a calm place to stay.</p>
+        </div>
+      </div>
+
+
+      <article class="white-panel">
+        <h2>A Different Way to Start a Holiday</h2>
+        <p>When people think about a family holiday, they often think about airports, suitcases, waiting times and planning stress. However, there is another way to start a trip: <span class="keyword">#TrainTravel</span>. It can be slow, simple and sustainable, especially for families with children.</p>
+
+        <h2>My Own Train Travel Experience</h2>
+        <p>I have experienced different train journeys myself. Once, I travelled to the other side of the Netherlands by intercity train. The trip took quite long, mainly because it was not a high-speed train. I have also travelled to Düsseldorf by fast train, and that experience was much better. The seats were comfortable, I arrived quickly, I could sleep for a while, and I had a nice view from the window. I remember seeing fields, towns and roads passing by while hearing the soft rhythm of the train. It felt calm, comfortable and easy.</p>
+
+        <h2>The Journey Becomes Part of the Holiday</h2>
+        <p>That feeling is important for <span class="keyword">#TrainTravelWithKids</span>. Children do not only want to arrive somewhere; they also want something to see and experience on the way. The train can become the first chapter of the holiday. This metaphor shows that the adventure already starts before the family reaches the campsite or city.</p>
+
+        <h2>Comfort and Camping for Families</h2>
+        <p>For <span class="keyword">#FamilyTravel</span>, comfort is very important. I have been to France a few times and stayed at a campsite in a mobile home. I liked that because it still felt like camping, but it was easier than bringing all our own gear. There were activities such as swimming, playgrounds and discos, which made the holiday fun for children and less stressful for parents. That is why <span class="keyword">#Camping</span> can work well when the accommodation is already prepared.</p>
+
+        <h2>Why This Holiday Benefits Families</h2>
+        <p>This type of holiday is beneficial because it gives families safety, comfort and shared memories. Parents save time because the route, accommodation and activities are already planned. Children get variety: one day they can explore nature, the next day they can visit a town or swim in a lake. Not only does this make the trip easier for parents, but it also gives children a more active and educational experience.</p>
+
+        <h2>Adventure in Southern Europe</h2>
+        <p>Our concept focuses on <span class="keyword">#SouthernEurope</span>, especially Italy, Slovenia and Croatia. These countries fit an <span class="keyword">#AdventurousHoliday</span> because they offer nature, culture and activities. Families can go <span class="keyword">#Hiking</span> in the mountains, visit small towns, swim in rivers or lakes and discover local food. This combination makes the trip interesting for both adults and children.</p>
+
+        <h2>A Safe, Fun and Responsible Trip</h2>
+        <p>What I personally like is the balance. It is not only about adventure, not only about comfort and not only about sustainability. It is about all three: a safe trip, a fun trip and a responsible trip. This list of three helps to emphasise the main point. It also shows that a family holiday can be exciting without becoming chaotic.</p>
+
+        <h2>Ready to Travel Differently?</h2>
+        <p>In the end, <span class="keyword">#Backpacking</span>, camping and train travel do not have to be only for young solo travellers. With the right planning, travelling with kids through Italy, Slovenia or Croatia can be practical, meaningful and memorable.</p>
+
+        <p><strong>Are you ready to make the journey part of the memory? <button type="button" class="blog-cta-link blog-cta-button" onclick="showPage('contact')">Contact us and start exploring Southern Europe by train.</button></strong></p>
+</article>
+    </section>
+  </main>
+
+  <main id="about" class="page hidden">
+    <section class="container">
+      <p class="page-label">About Us & CSR</p>
+      <h1>Travelling better, not faster.</h1>
+      <p class="intro">Family Tracks Europe makes sustainable train holidays easier, safer and more attractive for parents and children.</p>
+
+      
+        
+        <div class="about-gallery">
+          <div class="about-gallery-left">
+            <div class="about-gallery-main about-visual-card">
+            <img src="images/about_city_culture.png" alt="Train travelling through a green mountain landscape">
+            <p>Train travel is at the heart of our concept: a lower-impact way to explore Europe while enjoying the journey itself.</p>
+          </div>
+            <div class="about-quote-card">
+              <p>“It’s not just a trip … it’s a journey.”</p>
+            </div>
+          </div>
+          <div class="about-gallery-side">
+            <div class="about-visual-card compact">
+              <img src="images/about_southern_europe_village.png" alt="Historic city scene in Slovenia">
+              <p>Families discover authentic local culture instead of only visiting mass-tourism hotspots.</p>
+            </div>
+            <div class="about-visual-card compact">
+              <img src="images/about_forest_community.png" alt="Colourful village in a green hillside landscape">
+              <p>Small-scale destinations in Southern Europe create space for slower travel and deeper connection.</p>
+            </div>
+            <div class="about-visual-card compact">
+              <img src="images/trip_children_swimming.png" alt="People gathering in a forest at sunset">
+              <p>Nature and community matter too: travel should respect places, people and the environment.</p>
+            </div>
+          </div>
+        </div>
+        <div class="about-csr-layout">
+          <div class="white-panel about-panel">
+            <div class="about-content">
+              <h2>Who We Are</h2>
+              <p>Family Tracks Europe is a travel company created for Dutch families who want to explore Europe in a more relaxed, adventurous and responsible way. Our concept focuses on 14-day train holidays to Southern Europe, especially Italy, Slovenia and Croatia. We design trips for families with children aged 6–11 who want nature, culture and comfort, but do not want the stress of organising everything themselves.</p>
+
+              <p>We believe that a family holiday should not only be about arriving at a destination. The journey itself can also become part of the experience. By travelling by train, staying in family-friendly accommodation and choosing activities that connect families with local places, we want to make holidays more meaningful.</p>
+
+              <h2>Our Mission</h2>
+              <p>Our mission is to make sustainable family travel easier and more attractive. Many families want to make better choices, but they also want safety, comfort and clear planning. That is why we offer a complete concept with pre-planned train routes, ready-to-use camping accommodation and selected family activities.</p>
+
+              <p>We want parents to feel supported and children to feel excited. Families should be able to enjoy the view from the train, discover small towns, hike in nature, swim in lakes or rivers and experience local culture without feeling overwhelmed by planning.</p>
+
+              <h2>Our CSR Policy</h2>
+              <p>Our CSR policy is based on three main values: people, planet and profit. For people, we focus on families, local communities and partners. For the planet, we reduce the need for flying by offering train-based travel. For profit, we want tourism income to support local destinations instead of only using them as a background for tourism.</p>
+
+              <p>A concrete sustainable action is that our holidays are built around train travel instead of short-haul flights. Another action is that we work with local campsites, activity providers and small-scale partners where possible. This helps reduce import leakage and supports the multiplier effect, because more money stays in the destination. We also encourage slower travel. Families stay longer in selected areas instead of rushing from one place to another. This reduces pressure on destinations and gives families more time to understand the local culture and natural environment. <a class="source-link" href="https://www.untourism.int/sustainable-development" target="_blank" rel="noopener noreferrer">Click here</a>.</p>
+
+
+              <h2>Our CSR USP</h2>
+              <p>Our CSR USP is simple: families can travel more responsibly without losing comfort, safety or adventure. We combine train-based routes, ready-to-use camping accommodation, local partners, slower travel and honest communication. This makes sustainable travel practical for parents and exciting for children.</p>
+
+              <h2>Our Stakeholders</h2>
+              <p>Sustainable tourism is not something we can do alone. It requires collaboration with different stakeholders. Our internal stakeholders are our travel planners, customer service team and content creators. They design realistic routes, check family-friendly options and communicate honestly.</p>
+
+              <p>Our external stakeholders include families, train operators, campsites, mobile home providers, local activity companies, nature parks and local communities. Train operators help us make the journey practical. Campsites and accommodation partners provide comfort. Local activity providers offer experiences such as hiking, cycling, swimming and cultural visits. Local communities are important because tourism should respect their daily life and culture.</p>
+
+              <h2>Avoiding Greenwashing</h2>
+              <p>We do not claim that our holidays are perfect or 100% impact-free. Every trip has an environmental footprint. However, we do believe that families can make better choices. We avoid greenwashing by being specific about what we do: we use train routes, promote longer stays, work with local partners and give families clear information.</p>
+
+              <p>We also avoid exaggerated language. Instead of saying “completely green” or “zero impact”, we explain the real choices behind the trip. This makes our communication more honest and believable.</p>
+
+              <h2>Our Vision for the Future</h2>
+              <p>Our vision is to become a trusted family travel brand for sustainable train holidays in Europe. In the future, we want to expand our routes to more destinations and work with more certified accommodation and activity partners. We also want to add optional regenerative activities, such as supporting local nature projects or community-based initiatives.</p>
+
+              <p>For us, responsible travel is not about making families feel guilty. It is about giving them easy and enjoyable choices. A better holiday should still feel fun, comfortable and adventurous. With Family Tracks Europe, families can travel slower, connect deeper and create memories that last longer than the trip itself.</p>
+            </div>
+          </div>
+
+          <aside class="about-side-cards" aria-label="CSR highlights">
+            <div class="about-side-card">
+              <h3>Our promise to families</h3>
+              <p>We make responsible travel feel simple: clear routes, child-friendly stays and activities that are already selected before departure.</p>
+            </div>
+
+
+            <div class="about-side-card">
+              <h3>CSR USP</h3>
+              <p>Responsible travel without losing comfort: train routes, local partners, slower stays and clear information for families.</p>
+            </div>
+
+            <div class="about-side-card">
+              <h3>Concrete choices</h3>
+              <p>We focus on train-based routes, longer stays, local partners and practical information instead of vague sustainability claims.</p>
+            </div>
+
+            <div class="about-side-card">
+              <h3>Local value</h3>
+              <p>By working with campsites, guides and small activity providers, more value can stay in the destination and benefit local people.</p>
+            </div>
+
+            <div class="about-side-card">
+              <h3>Future improvement</h3>
+              <p>Our next step is to work with more certified partners and add optional nature-support projects for families who want to contribute more.</p>
+            </div>
+          </aside>
+        </div>
+</section></main>
+
+  <main id="contact" class="page hidden">
+    <section class="container">
+      <p class="page-label">Contact</p>
+      <h1>Ready for your next family adventure?</h1>
+      <p class="intro">Send us a message and we will help you find the sustainable train route that fits your family best.</p>
+
+      <div class="grid-2">
+        <div class="green-panel">
+          <h2>Family Tracks Europe</h2>
+          <p>hello@familytrackseurope.com</p>
+          <p>Amsterdam, The Netherlands</p>
+          <p>Available for Dutch families planning a 14-day train holiday in Europe.</p>
+          <div class="socials">
+            <div class="social insta">◎</div>
+            <div class="social linkedin">in</div>
+          </div>
+        </div>
+
+        <form class="white-panel">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <input type="text" placeholder="Number of adults">
+          <input type="text" placeholder="Age of children">
+          <input type="text" placeholder="Preferred destination: Italy / Slovenia / Croatia">
+          <textarea rows="5" placeholder="Message"></textarea>
+          <button type="button" class="btn btn-primary" style="width:100%;">Send my travel request</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-title">Family Tracks Europe</div>
+        <p>Sustainable, low-stress train holidays for Dutch families with children aged 6–11.</p>
+        <p>hello@familytrackseurope.com</p>
+        <p>Amsterdam, The Netherlands</p>
+      </div>
+
+      <div class="footer-links">
+        <button onclick="showPage('home')">Home</button>
+        <button onclick="showPage('trip')">The Trip</button>
+        <button onclick="showPage('blog')">Blog</button>
+        <button onclick="showPage('about')">About Us⌄</button>
+        <button onclick="showPage('contact')">Contact</button>
+        <div class="socials">
+          <div class="social insta">◎</div>
+          <div class="social linkedin">in</div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.add('hidden'));
+
+      const selectedPage = document.getElementById(pageId);
+      if (selectedPage) {
+        selectedPage.classList.remove('hidden');
+      }
+
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(button => button.classList.remove('active'));
+
+      const labels = {
+        home: 'Home',
+        trip: 'The Trip',
+        blog: 'Blog',
+        about: 'About Us',
+        contact: 'Contact'
+      };
+
+      buttons.forEach(button => {
+        if (button.textContent === labels[pageId]) {
+          button.classList.add('active');
+        }
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
